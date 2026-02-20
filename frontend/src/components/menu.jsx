@@ -33,7 +33,6 @@ export default function Menu({ order, onAmountChange }) {
                     pizza={pizza}
                     amount={order[pizza.name]?.amount || 0} // hier wird der Wert angezeigt
                     onAmountChange={onAmountChange} // Callback weitergeben
-                    price={pizza.price}
                 />
             ))}
         </div>

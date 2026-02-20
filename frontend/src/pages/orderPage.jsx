@@ -28,10 +28,10 @@ export default function OrderPage({ order, setOrder }) {
      * @param {string} pizzaName - Name of the pizza.
      * @param {number} amount - Selected quantity.
      * @param {number} price - Price per unit.
-     */    const handleAmountChange = (pizzaName, amount, price) => {
+     */    const handleAmountChange = (pizzaImg, pizzaName, amount, price) => {
         setOrder(prev => ({
             ...prev,
-            [pizzaName]: {amount, price}
+            [pizzaName]: { pizzaImg, amount, price }
         }));
     };
 
@@ -48,7 +48,9 @@ export default function OrderPage({ order, setOrder }) {
                     order={order}
                     onAmountChange={handleAmountChange} // <-- weitergeben
                 />
-                <button onClick={handleSubmit}>Order!</button>
+                <div className="button-wrapper">
+                    <button onClick={handleSubmit}>Order!</button>
+                </div>
             </div>
             <Footer />
         </div>

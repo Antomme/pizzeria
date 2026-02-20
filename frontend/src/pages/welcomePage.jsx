@@ -30,14 +30,16 @@ export default function WelcomePage(props) {
             <Header input="Ristorante Familia Tomme"></Header>
             <div className="container">
                 <p className="about-text">
-                   {text}
+                    {text}
                 </p>
                 <p>
                     {props.isShopOpen ? "We are currently open 🍕" : "We are closed 😔"}
                 </p>
-                <button onClick={() => navigate("/order")} className="button" disabled={!props.isShopOpen}>
-                    Let me pick!
-                </button>
+                <div className="button-wrapper">
+                    <button onClick={() => navigate("/order")} disabled={!props.isShopOpen}>
+                        Let me pick!
+                    </button>
+                </div>
             </div>
             <Footer></Footer>
         </div>

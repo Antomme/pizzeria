@@ -67,22 +67,35 @@ body {
 
 /* --- Container (für Content + Button) --- */
 .container {
-  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  /* alles untereinander */
+  align-items: stretch;
+  /* Items füllen Breite */
   max-width: 80rem;
   margin: 0 auto;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 1rem;
+  /* Abstand zwischen Items */
 }
+
 
 .container p {
-  margin-bottom: 1.5rem; /* genereller Absatzabstand */
+  margin-bottom: 1.5rem;
+  /* genereller Absatzabstand */
 }
 
-/* Button */
-.container button {
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  /* Button nach rechts */
   margin-top: 2rem;
+  /* Abstand nach oben */
+  width: 100%;
+  /* nutzt die volle Breite des Containers */
+}
+
+.button-wrapper button {
   background-color: #edc84b;
   border: 1px solid #b38f1f;
   border-radius: 5px;
@@ -93,16 +106,19 @@ body {
   transition: background-color 0.2s;
 }
 
-.container button:hover {
-  background-color: #b38f1f;
+.button-wrapper button:hover {
+  background-color: #070705;
   color: white;
 }
 
 .about-text {
-  white-space: pre-line; /* Zeilenumbrüche aus der .txt behalten */
+  white-space: pre-line;
+  /* Zeilenumbrüche aus der .txt behalten */
   line-height: 1.6;
-  margin-bottom: 2rem; /* Abstand nach unten */
+  margin-bottom: 2rem;
+  /* Abstand nach unten */
 }
+
 /* --- Pizza Grid --- */
 .menu {
   display: grid;
@@ -117,13 +133,38 @@ body {
 
 /* Pizza Summary Items - gleiches Design wie .pizza */
 
-/* Einzelne Summary-Items */
 .pizza-summary-item {
-  display: column;
-  justify-content: space-between;
+  display: flex;
+  /* Bild + Text nebeneinander */
   align-items: center;
-  padding: 1rem 1.5rem;
-  font-size: 1.2rem;
+  /* vertikal zentrieren */
+  gap: 1rem;
+  /* Abstand zwischen Bild und Text */
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid #edc84b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  min-height: 140px;
+  /* einheitliche Höhe */
+  max-height: 140px;
+  /* optional, damit sie nicht größer werden */
+}
+
+.pizza-summary-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.pizza-summary-item p {
+  margin: 0;
+  line-height: 1.4;
+  overflow: hidden;
+  /* Text nicht rauslaufen lassen */
+  text-overflow: ellipsis;
+  /* Optional: Text mit "..." abschneiden */
 }
 
 
@@ -153,17 +194,17 @@ body {
 }
 
 .pizza img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .pizza-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .pizza-details h3 {
@@ -194,6 +235,7 @@ body {
 
 
 .pizza-amount {
+  margin-top: 0.5rem; /* Abstand über Input */
   margin-left: auto;
   width: 4rem;
   height: 2rem;
@@ -221,5 +263,15 @@ body {
 
   .pizza img {
     margin-bottom: 1rem;
+  }
+
+
+  .pizza-details {
+    align-items: center; /* Text + Input zentrieren */
+  }
+
+  .pizza-amount {
+    margin-left: 0; /* Input nicht mehr rechts */
+    margin-top: 1rem; /* Etwas Abstand nach oben */
   }
 }
