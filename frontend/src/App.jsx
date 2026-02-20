@@ -3,6 +3,9 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import WelcomePage from './pages/welcomePage';
 import OrderPage from './pages/orderPage';
 import SummaryPage from './pages/summaryPage';
+import AboutPage from "./pages/aboutPage";
+import ImpressumPage from "./pages/impressumPage";
+import KontaktPage from "./pages/contactPage";
 
 /**
  * Main application component.
@@ -42,7 +45,13 @@ export default function App() {
       element: isShopOpen()
         ? <SummaryPage order={order} />
         : <Navigate to="/" replace />
-    }
+    },
+    { path: "/about", element: <AboutPage /> },
+    { path: "/impressum", element: <ImpressumPage /> },
+    { path: "/kontakt", element: <KontaktPage /> },
+
+    // Fallback: alles andere geht zurück auf Startseite
+    { path: "*", element: <Navigate to="/" replace /> }
   ]);
 
   return <RouterProvider router={router} />;
@@ -58,23 +67,23 @@ export default function App() {
  */
 
 function isShopOpen() {
-    const now = new Date();
-    const day = now.getDay();
-    const hour = now.getHours();
+  const now = new Date();
+  const day = now.getDay();
+  const hour = now.getHours();
 
-    let openHour, closeHour;
+  let openHour, closeHour;
 
-    if (day >= 1 && day <= 5) {
-        // Montag-Freitag
-        openHour = 10;
-        closeHour = 22;
-    } else {
-        // Samstag-Sonntag
-        openHour = 12;
-        closeHour = 23;
-    }
+  if (day >= 1 && day <= 5) {
+    // Montag-Freitag
+    openHour = 10;
+    closeHour = 22;
+  } else {
+    // Samstag-Sonntag
+    openHour = 12;
+    closeHour = 23;
+  }
 
-    const isOpen = hour >= openHour && hour < closeHour;
+  const isOpen = hour >= openHour && hour < closeHour;
 
-    return isOpen;
+  return isOpen;
 }

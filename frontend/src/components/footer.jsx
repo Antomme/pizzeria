@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 /**
  * Renders the global footer component.
  *
@@ -8,10 +9,13 @@
  * @returns {JSX.Element} The footer section with navigation links.
  */
 
-export function Footer(){
+export function Footer() {
+
+    const navigate = useNavigate();
+
     return (<footer className="footer">
-        <a>Über uns</a>
-        <a>Impressum</a>
-        <a>Kontakt</a>
+        <a onClick={() => navigate("/about")}>Über uns</a>
+        <a onClick={() => navigate("/impressum")}>Impressum</a>
+        <a onClick={() => navigate("/kontakt")}>Kontakt</a>
     </footer>);
 }

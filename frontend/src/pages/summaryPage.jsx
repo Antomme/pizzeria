@@ -17,7 +17,7 @@ import { Footer } from "../components/footer";
  */
 
 export default function SummaryPage({ order }) {
-
+    
     const safeOrder = order || {};
 
     const orderedItems = Object.entries(safeOrder).filter(([_, pizza]) => pizza.amount > 0);
@@ -37,12 +37,12 @@ export default function SummaryPage({ order }) {
             <div className="container">
                 {orderedItems.length === 0 ? (
                     <p>Keine Pizzen ausgewählt.</p>
-                ) : (
-                    orderedItems.map(([pizzaName, orderData]) => (
-                        <div key={pizzaName} className="pizza-summary-item">
-                            {pizzaName} x {orderData.amount} = {orderData.amount * orderData.price} €
-                        </div>
-                    )))}
+                ):(
+                orderedItems.map(([pizzaName, orderData]) => (
+                    <div key={pizzaName} className="pizza-summary-item">
+                        {pizzaName} x {orderData.amount} = {orderData.amount * orderData.price} €
+                    </div>
+                )))}
                 <div className="total">Total: {sum} €</div>
                 <button>Pay now!</button>
             </div>

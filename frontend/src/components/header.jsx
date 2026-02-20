@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 /**
  * Renders the global header component.
  *
@@ -9,7 +11,9 @@
  * @returns {JSX.Element} The header section containing the page title.
  */
 export default function Header(props){
-    return(<header className = "header">
+    const navigate = useNavigate();
+
+    return(<header onClick={()=>navigate("/")} className = "header">
         <h1 >{props.input}</h1>
     </header>);
 }
